@@ -12,6 +12,7 @@ void debounce(int);//built
 int getRow();
 int getCol();
 void displayMessage(char);//built
+int getKeypadIntValue();
 //void clear();
 
 

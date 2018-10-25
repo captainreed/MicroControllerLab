@@ -9,6 +9,7 @@ int ColumnResultIDR; //record column from IDR
 int prevColumnResultIDR;
 uint8_t message[6]; //Up to 6 characters to display on LCD
 int msgCount = 0; //Used in displayMessage
+int messageIndex = 0;
 bool findFlag = 0; //True when a keypad value has been determined
 
 void initKeypad()
@@ -301,9 +302,20 @@ void debounce(int duration)
 
 void displayMessage(char newChar)
 {
-    if (msgCount < 6)
-    {
-    message[msgCount] = (uint8_t)newChar;  
+	if(newChar - '0' >=0 && newChar - '0' <= 9)
+	{
+		if(msgCount == 0)
+		{
+			message[0] = (uint8_t)newChar;  
+			msgCount = 1;
+		}
+		else
+		{
+			message[1] = (uint8_t)newChar;  
+			msgCount = 0;
+		}
+	
+    //message[msgCount] = (uint8_t)newChar;  
     uint8_t* lcdOutput;
     lcdOutput = message;
    	 for (uint8_t i=0; i <= msgCount; i++)
@@ -311,9 +323,26 @@ void displayMessage(char newChar)
    		 LCD_WriteChar(lcdOutput, false, false, i);
     		 lcdOutput++;
    	 }
-		 msgCount++;
+		 //msgCount++;
 		 debounce(500000);
   }
+		
+}
+
+int getKeypadIntValue()
+{
+	int left = message[0] - '0';
+	int right = message[1] - '0';
+	
+	if(right == 0)
+	{
+		return left;
+	}
+	else
+	{
+	return left*10 + right;		
+	}
+		
 }
 
 

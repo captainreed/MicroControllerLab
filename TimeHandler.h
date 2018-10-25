@@ -2,8 +2,7 @@
 #define TIMEHANDLER_H
 
 #include <stdint.h>
-
-#define bool _Bool
+#include <stdbool.h>
 
 void initTimeHandler();
 void HandleTime();
