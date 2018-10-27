@@ -184,7 +184,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>2</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -325,7 +324,6 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -338,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Include</IncludePath>
+              <IncludePath>C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -441,6 +439,11 @@
               <FileName>stm32l476xx.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\stm32l476xx.h</FilePath>
+            </File>
+            <File>
+              <FileName>startup_stm32l476xx.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\startup_stm32l476xx.s</FilePath>
             </File>
           </Files>
         </Group>
