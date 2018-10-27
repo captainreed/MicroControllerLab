@@ -1,9 +1,11 @@
 #include "TimeHandler.h"
 #include "Keypad.h"
+#include "ServoDriver.h"
 
 int currentKeypadValue = 0;
 bool poundSignPressed = false;
 bool stepperInPlace = false;
+bool timerAwaitingStart = false; //this flag will be true while the timer is in the correct spot and waiting for the # key to be pressed agian
 
 bool timerRunning;
 void initTimeHandler()
@@ -27,8 +29,12 @@ void HandleTime()
 			{
 				poundSignPressed = false;
 				//send the stepper to the right position
+				if(currentKeypadValue <= 59)
+					setClockStartPosition(currentKeypadValue);
+				stepperInPlace = true;
+				
 				//dont allow the user to input any more data untill the next cycle
-				timerRunning = true;
+				timerAwaitingStart = true;
 			}
 	}
 }

@@ -1,8 +1,10 @@
 --cpu=Cortex-M4.fp --branchpatch=sdcomp-29491-629360
-".\objects\core_cm4_constants.o"
+".\objects\keypad.o"
+".\objects\servodriver.o"
+".\objects\piezobuzzer.o"
 ".\objects\main.o"
-".\objects\startup_stm32l476xx.o"
-".\objects\stm32l476xx_constants.o"
+".\objects\lcd.o"
+".\objects\timehandler.o"
 --strict --scatter ".\Objects\Lab2.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
