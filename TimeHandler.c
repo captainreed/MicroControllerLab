@@ -1,16 +1,21 @@
 #include "TimeHandler.h"
 #include "Keypad.h"
 #include "ServoDriver.h"
+#include "PiezoBuzzer.h"
 
-int currentKeypadValue = 0;
-bool poundSignPressed = false;
-bool stepperInPlace = false;
-bool timerAwaitingStart = false; //this flag will be true while the timer is in the correct spot and waiting for the # key to be pressed agian
+int keypadValue;
+bool poundWasPressed;
+bool stepperInPlace;
+bool clockWound; //this flag will be true while the timer is in the correct spot and waiting for the # key to be pressed agian
 
 bool timerRunning;
 void initTimeHandler()
 {
 timerRunning = false;
+keypadValue = 0;
+poundWasPressed = false;
+stepperInPlace = false;
+clockWound = false; //this flag will be true while the timer is in the correct spot and waiting for the # key to be pressed agian
 }
 
 void HandleTime()
@@ -20,21 +25,31 @@ void HandleTime()
 //wait for pound to be pressed again
 //while the timer is running do not accept new input from the user
 //when the time has expired sound the buzzer for 1 second	
-	if(!timerRunning)
+	if(!clockWound)
 	{
 		scanKeypad();
-		poundSignPressed = poundPressed();
-		currentKeypadValue = getKeypadIntValue();
-			if(poundSignPressed & !stepperInPlace)
+		poundWasPressed = poundPressed();
+		keypadValue = getKeypadIntValue();
+			if(poundWasPressed)
 			{
-				poundSignPressed = false;
 				//send the stepper to the right position
-				if(currentKeypadValue <= 59)
-					setClockStartPosition(currentKeypadValue);
-				stepperInPlace = true;
-				
+				if(keypadValue <= 59)
+					setClockStartPosition(keypadValue);
 				//dont allow the user to input any more data untill the next cycle
-				timerAwaitingStart = true;
+				clockWound = true;
+				poundWasPressed = false;
 			}
+	}
+	else
+	{
+		scanKeypad();
+		poundWasPressed = poundPressed();
+		if(poundWasPressed)
+		{
+			runServo(); //the system will rotate
+			soundBuzzer(1); //sound the buzzer for 1 second
+		}
+		clockWound = false;
+		poundWasPressed = false;
 	}
 }

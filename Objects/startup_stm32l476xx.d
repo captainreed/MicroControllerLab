@@ -1,1 +1,1 @@
-.\objects\startup_stm32l476xx.o: ..\Downloads\Lab_2asm\Lab01_LEDasm\startup_stm32l476xx.s
+.\objects\startup_stm32l476xx.o: RTE\Device\STM32L476VGTx\startup_stm32l476xx.s
