@@ -1,6 +1,10 @@
 #include "TimeHandler.h"
 #include "Keypad.h"
 
+int currentKeypadValue = 0;
+bool poundSignPressed = false;
+bool stepperInPlace = false;
+
 bool timerRunning;
 void initTimeHandler()
 {
@@ -17,6 +21,14 @@ void HandleTime()
 	if(!timerRunning)
 	{
 		scanKeypad();
-								
+		poundSignPressed = poundPressed();
+		currentKeypadValue = getKeypadIntValue();
+			if(poundSignPressed & !stepperInPlace)
+			{
+				poundSignPressed = false;
+				//send the stepper to the right position
+				//dont allow the user to input any more data untill the next cycle
+				timerRunning = true;
+			}
 	}
 }

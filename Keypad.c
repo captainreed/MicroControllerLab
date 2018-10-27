@@ -12,6 +12,12 @@ int msgCount = 0; //Used in displayMessage
 int messageIndex = 0;
 bool findFlag = 0; //True when a keypad value has been determined
 
+int lastKnownRow = 0;
+int lastKnownCol = 0;
+int currentKeypadValue = 0;
+
+bool poundSignPressed = false;
+
 void initKeypad()
 {
     /*
@@ -102,48 +108,63 @@ void scanKeypad()
 			 
 			 
    		 case 0x0000000E:
-       		 location[0] = 1;
-       		 findLocation();
-   					   debounce(100);
+       		  location[0] = 1;
+						findLocation();
+						debounce(100);
+						findFlag = 1;
        		 break;
 
    		 case 0x0000000D:
-       		 location[0] = 2;
-       		 findLocation();
-   						 debounce(100);
+       		  location[0] = 2;
+       		  findLocation();
+   					debounce(100);
+						findFlag = 1;
        		 break;
   	 
    		 case 0x0000000B:
-       		 location[0] = 3;
-       		 findLocation();
-   					   debounce(100);
+       		  location[0] = 3;
+       		  findLocation();
+   					debounce(100);
+						findFlag = 1;
        		 break;
   		 
    		 case 0x00000007:
-       		 location[0] = 4;
-       		 findLocation();
-       		 debounce(100);
-   						 break;
+       		  location[0] = 4;
+       		  findLocation();
+       		  debounce(100);
+						findFlag = 1;
+						break;
    	 }
-   		 //display message will pull the data from location[] and display the correct character in the next slot
+   		 //displayMessage the new character on the screen and save the last know good kepad digit if a new number is entered
    		if (findFlag)
 			{				
 		 char character = gridToChar();
    		 displayMessage(character);
-			}
 				
+			currentKeypadValue = getKeypadIntValue();
+				
+			lastKnownRow = location[0];
+			lastKnownCol = location[1];
+			}
+							
    		 //reset the location array so that it is not re-used
    		 location[0] = 0;
    		 location[1] = 0;
    	 prevColumnResultIDR = ColumnResultIDR;
 }
 
-int getRow()[
-	return location[0];
+int getRow(){
+	return lastKnownRow;
 }
 
-int getCol()[
-	return location[1];
+int getCol(){
+	return lastKnownCol;
+}
+
+bool poundPressed()
+{
+	return poundSignPressed;
+	poundSignPressed = false;
 }
 
 
@@ -234,6 +255,8 @@ int rowTestIDR = 0x0;
 
 char gridToChar()
 {
+	poundSignPressed = false;
+	
     if(location[0] == 1)
     {
    		 switch(location[1]){
@@ -266,12 +289,13 @@ char gridToChar()
     {
    		 switch(location[1]){
        		 case 1://3
-           		 return '3';
+							return '3';
        		 case 2://6
-       		 return '6';
+							return '6';
        		 case 3://9
-             		 return '9';
+							return '9';
        		 case 4://#
+						 poundSignPressed = true;
        		 return 'H';
    	 }
     }

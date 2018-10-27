@@ -11,8 +11,10 @@ char gridToChar(void);//built
 void debounce(int);//built
 int getRow();
 int getCol();
+bool poundPressed();
 void displayMessage(char);//built
 int getKeypadIntValue();
+bool poundPressed();
 //void clear();
 
 
