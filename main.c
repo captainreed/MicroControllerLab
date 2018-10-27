@@ -14,10 +14,10 @@ int main(void){
 	initBuzzer();
 	initServo();
 	initTimeHandler();
-	soundBuzzer(3);
-//	while(1)
-//	{
-//		HandleTime();
-//	}
+	//soundBuzzer(3);
+	while(1)
+	{
+		HandleTime();
+	}
 	
 }
