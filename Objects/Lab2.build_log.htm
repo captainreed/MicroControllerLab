@@ -27,39 +27,19 @@ Project File Date:  10/27/2018
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling main.c...
-lcd.h(19): warning:  #1-D: last line of file ends without a newline
-  #endif /* __STM32L476G_DISCOVERY_LCD_H */
-Keypad.h(12): warning:  #1295-D: Deprecated declaration getRow - give arg types
-  int getRow();
-Keypad.h(13): warning:  #1295-D: Deprecated declaration getCol - give arg types
-  int getCol();
-Keypad.h(14): warning:  #1295-D: Deprecated declaration poundPressed - give arg types
-  bool poundPressed();
-Keypad.h(16): warning:  #1295-D: Deprecated declaration getKeypadIntValue - give arg types
-  int getKeypadIntValue();
-Keypad.h(17): warning:  #1295-D: Deprecated declaration poundPressed - give arg types
-  bool poundPressed();
-PiezoBuzzer.h(8): warning:  #1295-D: Deprecated declaration initBuzzer - give arg types
-  void initBuzzer();
-PiezoBuzzer.h(11): warning:  #1-D: last line of file ends without a newline
-  #endif /* __STM32L476G_DISCOVERY_LCD_H */
+compiling ServoDriver.c...
 ServoDriver.h(8): warning:  #1295-D: Deprecated declaration initServo - give arg types
   void initServo();
 ServoDriver.h(12): warning:  #1295-D: Deprecated declaration runServo - give arg types
   void runServo();//rotate the servo from its initial state to the 0 state in even intervals
 ServoDriver.h(14): warning:  #1-D: last line of file ends without a newline
   #endif /* __STM32L476G_DISCOVERY_LCD_H */
-TimeHandler.h(7): warning:  #1295-D: Deprecated declaration initTimeHandler - give arg types
-  void initTimeHandler();
-TimeHandler.h(8): warning:  #1295-D: Deprecated declaration HandleTime - give arg types
-  void HandleTime();
-TimeHandler.h(10): warning:  #1-D: last line of file ends without a newline
-  #endif /* __STM32L476G_DISCOVERY_LCD_H */
-main.c: 14 warnings, 0 errors
+ServoDriver.c(29): warning:  #177-D: variable "HalfStepVals"  was declared but never referenced
+  	uint32_t HalfStepVals[6] ={0x84,0x4,0x44,0x48,0x8,0x88};
+ServoDriver.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=1744 RO-data=424 RW-data=60 ZI-data=1636  
-".\Objects\Lab2.axf" - 0 Error(s), 14 Warning(s).
+Program Size: Code=5208 RO-data=520 RW-data=60 ZI-data=1636  
+".\Objects\Lab2.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -78,9 +58,9 @@ Package Vendor: Keil
    * Component: Keil::Device:Startup:1.3.1
       Source file:   MDK\Device\Source\ARM\STM32L4xx_DB_OPT.s
       Include file:  Drivers\CMSIS\Device\ST\STM32L4xx\Include\stm32l4xx.h
-      Source file:   Drivers\CMSIS\Device\ST\STM32L4xx\Source\Templates\arm\startup_stm32l476xx.s
       Source file:   Drivers\CMSIS\Device\ST\STM32L4xx\Source\Templates\system_stm32l4xx.c
-Build Time Elapsed:  00:00:01
+      Source file:   Drivers\CMSIS\Device\ST\STM32L4xx\Source\Templates\arm\startup_stm32l476xx.s
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>
