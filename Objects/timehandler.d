@@ -3,3 +3,5 @@
 .\objects\timehandler.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\timehandler.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\timehandler.o: Keypad.h
+.\objects\timehandler.o: ServoDriver.h
+.\objects\timehandler.o: PiezoBuzzer.h
