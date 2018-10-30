@@ -46,7 +46,7 @@ void HandleTime()
 		poundWasPressed = poundPressed();
 		if(poundWasPressed)
 		{
-			runServo(); //the system will rotate
+			runServo(keypadValue); //the system will rotate
 			soundBuzzer(1); //sound the buzzer for 1 second
 		}
 		clockWound = false;
