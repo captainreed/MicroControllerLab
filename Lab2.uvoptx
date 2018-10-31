@@ -151,11 +151,16 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
+<<<<<<< HEAD
           <ItemText>newChar</ItemText>
+=======
+          <ItemText>numCycles</ItemText>
+>>>>>>> 4be629ff626c1b71e251d93e8ef57e82205fe34f
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
+<<<<<<< HEAD
           <ItemText>location[0]</ItemText>
         </Ww>
         <Ww>
@@ -192,6 +197,9 @@
           <count>8</count>
           <WinNumber>1</WinNumber>
           <ItemText>msgCount</ItemText>
+=======
+          <ItemText>location</ItemText>
+>>>>>>> 4be629ff626c1b71e251d93e8ef57e82205fe34f
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -236,12 +244,6 @@
       <pszMrulep></pszMrulep>
       <pSingCmdsp></pSingCmdsp>
       <pMultCmdsp></pMultCmdsp>
-      <SystemViewers>
-        <Entry>
-          <Name>System Viewer\GPIOA</Name>
-          <WinId>35905</WinId>
-        </Entry>
-      </SystemViewers>
       <DebugDescription>
         <Enable>1</Enable>
         <EnableLog>0</EnableLog>
