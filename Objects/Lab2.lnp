@@ -5,7 +5,7 @@
 ".\objects\main.o"
 ".\objects\lcd.o"
 ".\objects\timehandler.o"
-".\objects\startup_stm32l476xx_1.o"
+".\objects\startup_stm32l476xx.o"
 ".\objects\system_stm32l4xx.o"
 --strict --scatter ".\Objects\Lab2.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

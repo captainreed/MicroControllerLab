@@ -1,9 +1,9 @@
-#include "stm32l476xx.h"
 #include "lcd.h"
 #include "Keypad.h"
 #include "PiezoBuzzer.h"
 #include "ServoDriver.h"
 #include "TimeHandler.h"
+#include "stm32l476xx.h"
 
 int main(void){
 	
@@ -15,9 +15,11 @@ int main(void){
 	initServo();
 	initTimeHandler();
 	//soundBuzzer(3);
+	LCD_DisplayString((uint8_t*)"Test");
 	while(1)
 	{
-		HandleTime();
+		//HandleTime();
+		scanKeypad();
 	}
 	
 }

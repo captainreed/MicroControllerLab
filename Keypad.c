@@ -9,13 +9,7 @@ int ColumnResultIDR; //record column from IDR
 int prevColumnResultIDR;
 uint8_t message[6]; //Up to 6 characters to display on LCD
 int msgCount = 0; //Used in displayMessage
-int messageIndex = 0;
 bool findFlag = 0; //True when a keypad value has been determined
-
-int lastKnownRow = 0;
-int lastKnownCol = 0;
-int currentKeypadValue = 0;
-
 bool poundSignPressed = false;
 
 void initKeypad()
@@ -93,7 +87,6 @@ void scanKeypad()
     
     if one of the pins is zero and it has not changed do not allow another press(dont allow long button press to print multiple #s)
     if one of the pins is zero begin the looping through the scan process
-    
     after scanning wait for an amount of time to debounce
     */
 		findFlag = 0;
@@ -101,6 +94,7 @@ void scanKeypad()
 		debounce(10000);
     ColumnResultIDR = GPIOA->IDR;
 		ColumnResultIDR &= 0x000000FF;  
+		poundSignPressed = false;
 
 		//Switch to column based on ColumnResult
    	 switch(ColumnResultIDR){
@@ -108,63 +102,40 @@ void scanKeypad()
 			 
 			 
    		 case 0x0000000E:
-       		  location[0] = 1;
-						findLocation();
-						debounce(100);
-						findFlag = 1;
+       		 location[0] = 1;
+       		 findLocation();
+   					   debounce(1000);
        		 break;
 
    		 case 0x0000000D:
-       		  location[0] = 2;
-       		  findLocation();
-   					debounce(100);
-						findFlag = 1;
+       		 location[0] = 2;
+       		 findLocation();
+   						 debounce(1000);
        		 break;
   	 
    		 case 0x0000000B:
-       		  location[0] = 3;
-       		  findLocation();
-   					debounce(100);
-						findFlag = 1;
+       		 location[0] = 3;
+       		 findLocation();
+   					   debounce(1000);
        		 break;
   		 
    		 case 0x00000007:
-       		  location[0] = 4;
-       		  findLocation();
-       		  debounce(100);
-						findFlag = 1;
-						break;
+       		 location[0] = 4;
+       		 findLocation();
+       		 debounce(1000);
+   						 break;
    	 }
-   		 //displayMessage the new character on the screen and save the last know good kepad digit if a new number is entered
+   		 //display message will pull the data from location[] and display the correct character in the next slot
    		if (findFlag)
 			{				
 		 char character = gridToChar();
    		 displayMessage(character);
-				
-			currentKeypadValue = getKeypadIntValue();
-				
-			lastKnownRow = location[0];
-			lastKnownCol = location[1];
 			}
-							
+				
    		 //reset the location array so that it is not re-used
    		 location[0] = 0;
    		 location[1] = 0;
    	 prevColumnResultIDR = ColumnResultIDR;
-}
-
-int getRow(){
-	return lastKnownRow;
-}
-
-int getCol(){
-	return lastKnownCol;
-}
-
-bool poundPressed()
-{
-	return poundSignPressed;
-	poundSignPressed = false;
 }
 
 
@@ -255,8 +226,6 @@ int rowTestIDR = 0x0;
 
 char gridToChar()
 {
-	poundSignPressed = false;
-	
     if(location[0] == 1)
     {
    		 switch(location[1]){
@@ -289,13 +258,13 @@ char gridToChar()
     {
    		 switch(location[1]){
        		 case 1://3
-							return '3';
+           		 return '3';
        		 case 2://6
-							return '6';
+       		 return '6';
        		 case 3://9
-							return '9';
+             		 return '9';
        		 case 4://#
-						 poundSignPressed = true;
+					poundSignPressed = true;
        		 return 'H';
    	 }
     }
@@ -304,7 +273,8 @@ char gridToChar()
     {
    		 switch(location[1]){
        		 case 1://A
-              		 return 'A';
+						 poundSignPressed = true;
+            return 'A';
        		 case 2://B
       		 return 'B';
        		 case 3://C
@@ -326,31 +296,45 @@ void debounce(int duration)
 
 void displayMessage(char newChar)
 {
-	if(newChar - '0' >=0 && newChar - '0' <= 9)
-	{
-		if(msgCount == 0)
-		{
-			message[0] = (uint8_t)newChar;  
-			msgCount = 1;
-		}
-		else
-		{
-			message[1] = (uint8_t)newChar;  
-			msgCount = 0;
-		}
 	
+	if(newChar > '0' && newChar < '0' + 9){
+	for(int i = 0; i < 6; i++)
+	{
+		if(i<3 || i>4)
+		{
+		message[i] = (uint8_t)'0';
+		}
+	}
+	
+	if(msgCount%2 == 0)
+	{
+		message[3] = (uint8_t)newChar;
+	}
+	else if(msgCount%2 == 1)
+	{
+		message[4] = (uint8_t)newChar;
+	}
+    //if (msgCount < 6)
+    //{
     //message[msgCount] = (uint8_t)newChar;  
     uint8_t* lcdOutput;
     lcdOutput = message;
-   	 for (uint8_t i=0; i <= msgCount; i++)
+   	 //for (uint8_t i=0; i <= msgCount; i++)
+		for (uint8_t i=0; i <= 6; i++)
    	 {
    		 LCD_WriteChar(lcdOutput, false, false, i);
     		 lcdOutput++;
    	 }
-		 //msgCount++;
+		 msgCount++;
 		 debounce(500000);
-  }
-		
+  //}
+	 }
+}
+
+bool poundPressed()
+{
+	return poundSignPressed;
+	poundSignPressed = false;
 }
 
 int getKeypadIntValue()
@@ -368,8 +352,6 @@ int getKeypadIntValue()
 	}
 		
 }
-
-
 
 
 
