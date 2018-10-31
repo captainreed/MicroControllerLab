@@ -14,6 +14,7 @@ int main(void){
 	initBuzzer();
 	initServo();
 	setClockStartPosition(45);
+	soundBuzzer(1);
 	runServo(45);
 	//initTimeHandler();
 	soundBuzzer(3);
