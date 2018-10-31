@@ -23,7 +23,7 @@ void initKeypad()
     /*
     enable clock GPIO E
     for the output pins PE[10:13]
-    set MODER to output mode            		 01
+    set MODER to output mode            01
     set otyper to output open drain 	 1
     set pupdr to no pull up/pull down 00
     for the input pins PA[0:3]
