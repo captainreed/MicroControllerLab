@@ -70,6 +70,6 @@ void delay(int delayVal)
 {
 	for (int i = 0; i < delayVal; i++)
 	{
-		void();
+		(void)0;
 	}
 }
