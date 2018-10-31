@@ -1,7 +1,7 @@
 #include "ServoDriver.h"
 #include "stm32l476xx.h"
 
-int setDelay = 1000;     //Changing this will change delay for winding up the clock
+int setDelay = 10000;     //Changing this will change delay for winding up the clock
 int runDelay = 10000;		//Changing this will change delay for running the clock from set position
 
 /* HALF STEP POSITIONS
