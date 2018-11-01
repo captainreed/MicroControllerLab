@@ -1,5 +1,7 @@
 #include "LCD.h"
 #include "Keypad.h"
+#include "ServoDriver.h"
+#include "PiezoBuzzer.h"
 #include "stm32l476xx.h"
 #include <stdint.h>
 #include <stdbool.h>
@@ -7,10 +9,11 @@
 int location[2];//columns then rows of the keypad
 int ColumnResultIDR; //record column from IDR
 int prevColumnResultIDR;
-uint8_t message[6]; //Up to 6 characters to display on LCD
+uint8_t message[6] = { 0,0,0,0,0,0 } ; //Up to 6 characters to display on LCD
 int msgCount = 0; //Used in displayMessage
 bool findFlag = 0; //True when a keypad value has been determined
 bool poundSignPressed = false;
+int timeVal = 0;
 
 void initKeypad()
 {
@@ -296,6 +299,38 @@ void debounce(int duration)
 
 void displayMessage(char newChar)
 {
+    if (msgCount < 6)
+    {
+    message[msgCount] = (uint8_t)newChar;  
+    uint8_t* lcdOutput;
+    lcdOutput = message;
+   	 for (uint8_t i=0; i < 3; i++)
+   	 {
+   		 LCD_WriteChar(lcdOutput, false, false, i);
+    		 lcdOutput++;
+   	 }
+		 msgCount++;
+		 debounce(500000);
+		 
+  }
+		if (message[2] != 0)
+		{
+			int tens = 10 * (message[0] - '0');
+			int ones = message[1] - '0';
+			int clockVal = tens + ones;
+			setClockStartPosition(clockVal);
+			runServo(clockVal);
+			soundBuzzer(3);
+			for (int i = 0; i < 6; i++)
+			{
+			message[i] = 0;
+			}
+		}
+}
+
+/*
+void displayMessage(char newChar)
+{
 	
 	if(newChar > '0' && newChar < '0' + 9){
 	for(int i = 0; i < 6; i++)
@@ -330,12 +365,16 @@ void displayMessage(char newChar)
   //}
 	 }
 }
+*/
+
 
 bool poundPressed()
 {
 	return poundSignPressed;
 	poundSignPressed = false;
 }
+
+
 
 int getKeypadIntValue()
 {

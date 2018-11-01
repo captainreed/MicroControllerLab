@@ -14,9 +14,9 @@ int main(void){
 	initBuzzer();
 	initServo();
 //<<<<<<< HEAD
-	initTimeHandler();
+	//initTimeHandler();
 	//soundBuzzer(3);
-	LCD_DisplayString((uint8_t*)"Test");
+//LCD_DisplayString((uint8_t*)"Test");
 //=======
 	//setClockStartPosition(45);
 	//soundBuzzer(1);
@@ -24,10 +24,14 @@ int main(void){
 	//initTimeHandler();
 	//soundBuzzer(3);
 //>>>>>>> 4be629ff626c1b71e251d93e8ef57e82205fe34f
+
+
 	while(1)
 	{
-		//HandleTime();
+//		HandleTime();
 		scanKeypad();
 	}
+	
+	
 	
 }

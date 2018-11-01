@@ -686,3 +686,4 @@ void LCD_WriteChar(uint8_t* ch, bool point, bool colon, uint8_t position){
 
 
 
+

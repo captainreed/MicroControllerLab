@@ -3,41 +3,30 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.24.2.0
-Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Faith Spraktes, Utah State University, LIC=----
+IDE-Version: µVision V5.26.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Gil Bradshaw, Utah State University, LIC=----
  
 Tool Versions:
-Toolchain:       MDK-Lite  Version: 5.24.1
+Toolchain:       MDK-Lite  Version: 5.26.2.0
 Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.06 update 5 (build 528)
-Assembler:       Armasm.exe V5.06 update 5 (build 528)
-Linker/Locator:  ArmLink.exe V5.06 update 5 (build 528)
-Library Manager: ArmAr.exe V5.06 update 5 (build 528)
-Hex Converter:   FromElf.exe V5.06 update 5 (build 528)
-CPU DLL:         SARMCM3.DLL V5.24.1
-Dialog DLL:      DCM.DLL V1.16.0.0
-Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
-Dialog DLL:      TCM.DLL V1.32.0.0
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.26.2.0
+Dialog DLL:      DCM.DLL V1.17.2.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.5.0
+Dialog DLL:      TCM.DLL V1.36.1.0
  
 <h2>Project:</h2>
-C:\Users\A01577421\Documents\Lab Repository\MicroControllerLab\Lab2.uvprojx
+C:\Users\ahigb\OneDrive\Documents\GitHub\MicroControllerLab\Lab2.uvprojx
 Project File Date:  10/31/2018
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-compiling LCD.c...
-lcd.h(19): warning:  #1-D: last line of file ends without a newline
-  #endif /* __STM32L476G_DISCOVERY_LCD_H */
-LCD.c: 1 warning, 0 errors
-linking...
-Program Size: Code=4722 RO-data=498 RW-data=40 ZI-data=1632  
-".\Objects\Lab2.axf" - 0 Error(s), 1 Warning(s).
-=======
 compiling main.c...
 lcd.h(19): warning:  #1-D: last line of file ends without a newline
   #endif /* __STM32L476G_DISCOVERY_LCD_H */
@@ -66,26 +55,33 @@ TimeHandler.h(8): warning:  #1295-D: Deprecated declaration HandleTime - give ar
 TimeHandler.h(10): warning:  #1-D: last line of file ends without a newline
   #endif /* __STM32L476G_DISCOVERY_LCD_H */
 main.c: 13 warnings, 0 errors
->>>>>>> cbbf39d9346e0b0cd57ef964c20dc2e5a7c7f6dc
-compiling ServoDriver.c...
+compiling Keypad.c...
+LCD.h(19): warning:  #1-D: last line of file ends without a newline
+  #endif /* __STM32L476G_DISCOVERY_LCD_H */
+Keypad.h(12): warning:  #1295-D: Deprecated declaration getRow - give arg types
+  int getRow();
+Keypad.h(13): warning:  #1295-D: Deprecated declaration getCol - give arg types
+  int getCol();
+Keypad.h(14): warning:  #1295-D: Deprecated declaration poundPressed - give arg types
+  bool poundPressed();
+Keypad.h(16): warning:  #1295-D: Deprecated declaration getKeypadIntValue - give arg types
+  int getKeypadIntValue();
+Keypad.h(17): warning:  #1295-D: Deprecated declaration poundPressed - give arg types
+  bool poundPressed();
 ServoDriver.h(8): warning:  #1295-D: Deprecated declaration initServo - give arg types
   void initServo();
 ServoDriver.h(14): warning:  #1-D: last line of file ends without a newline
   #endif /* __STM32L476G_DISCOVERY_LCD_H */
-ServoDriver.c(49): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  	int numCycles = (int)(fCycles + .5);
-ServoDriver.c(67): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  	int numCycles = (int)(fCycles + .5);
-ServoDriver.c: 4 warnings, 0 errors
+PiezoBuzzer.h(8): warning:  #1295-D: Deprecated declaration initBuzzer - give arg types
+  void initBuzzer();
+PiezoBuzzer.h(11): warning:  #1-D: last line of file ends without a newline
+  #endif /* __STM32L476G_DISCOVERY_LCD_H */
+Keypad.c(374): warning:  #111-D: statement is unreachable
+  	poundSignPressed = false;
+Keypad.c: 11 warnings, 0 errors
 linking...
-<<<<<<< HEAD
-Program Size: Code=6540 RO-data=496 RW-data=164 ZI-data=1636  
-".\Objects\Lab2.axf" - 0 Error(s), 4 Warning(s).
-=======
-Program Size: Code=6536 RO-data=496 RW-data=164 ZI-data=1636  
-".\Objects\Lab2.axf" - 0 Error(s), 17 Warning(s).
->>>>>>> 4be629ff626c1b71e251d93e8ef57e82205fe34f
->>>>>>> cbbf39d9346e0b0cd57ef964c20dc2e5a7c7f6dc
+Program Size: Code=6332 RO-data=496 RW-data=140 ZI-data=1636  
+".\Objects\Lab2.axf" - 0 Error(s), 24 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -102,22 +98,11 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: Keil::Device:Startup:1.3.1
-      Source file:   Drivers\CMSIS\Device\ST\STM32L4xx\Source\Templates\system_stm32l4xx.c
-      Source file:   Drivers\CMSIS\Device\ST\STM32L4xx\Source\Templates\arm\startup_stm32l476xx.s
       Source file:   MDK\Device\Source\ARM\STM32L4xx_DB_OPT.s
-<<<<<<< HEAD
       Include file:  Drivers\CMSIS\Device\ST\STM32L4xx\Include\stm32l4xx.h
-Build Time Elapsed:  00:00:00
-=======
-      Source file:   Drivers\CMSIS\Device\ST\STM32L4xx\Source\Templates\arm\startup_stm32l476xx.s
       Source file:   Drivers\CMSIS\Device\ST\STM32L4xx\Source\Templates\system_stm32l4xx.c
-      Include file:  Drivers\CMSIS\Device\ST\STM32L4xx\Include\stm32l4xx.h
-<<<<<<< HEAD
+      Source file:   Drivers\CMSIS\Device\ST\STM32L4xx\Source\Templates\arm\startup_stm32l476xx.s
 Build Time Elapsed:  00:00:00
-=======
-Build Time Elapsed:  00:00:01
->>>>>>> 4be629ff626c1b71e251d93e8ef57e82205fe34f
->>>>>>> cbbf39d9346e0b0cd57ef964c20dc2e5a7c7f6dc
 </pre>
 </body>
 </html>
