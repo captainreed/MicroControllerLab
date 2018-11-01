@@ -8,11 +8,11 @@
 int main(void){
 	
 	// Switch system clock to HSI here
-	
-  LCD_Initialization();
-	initKeypad();
-	initBuzzer();
 	initServo();
+	LCD_Initialization();
+  initKeypad();
+	initBuzzer();
+
 //<<<<<<< HEAD
 	//initTimeHandler();
 	//soundBuzzer(3);

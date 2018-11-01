@@ -14,6 +14,8 @@ int msgCount = 0; //Used in displayMessage
 bool findFlag = 0; //True when a keypad value has been determined
 bool poundSignPressed = false;
 int timeVal = 0;
+bool hash1Press = false;
+bool hash2Press = false;
 
 void initKeypad()
 {
@@ -291,7 +293,7 @@ char gridToChar()
 
 void debounce(int duration)
 {
-  for (int i =0 ; i < duration; i++)
+		for (int i =0 ; i < duration; i++)
     {
    	 (void)0;
     }
@@ -304,28 +306,43 @@ void displayMessage(char newChar)
     message[msgCount] = (uint8_t)newChar;  
     uint8_t* lcdOutput;
     lcdOutput = message;
-   	 for (uint8_t i=0; i < 3; i++)
+   	 for (uint8_t i=0; i < 2; i++)
    	 {
    		 LCD_WriteChar(lcdOutput, false, false, i);
     		 lcdOutput++;
    	 }
 		 msgCount++;
 		 debounce(500000);
-		 
-  }
-		if (message[2] != 0)
+		}
+		
+		int tens = 10 * (message[0] - '0');
+		int ones = message[1] - '0';
+		int clockVal = tens + ones;
+	
+		if (message[2] == 'H' && !hash1Press)
 		{
-			int tens = 10 * (message[0] - '0');
-			int ones = message[1] - '0';
-			int clockVal = tens + ones;
 			setClockStartPosition(clockVal);
-			runServo(clockVal);
-			soundBuzzer(3);
+			hash1Press = true;
+		}
+		
+		if (message[3] == 'H' && !hash2Press)
+			{
+				runServo(clockVal);
+				hash2Press = true;
+				soundBuzzer(3);
+			}
+			
+		/* FUNCTIONAL INCORPORATION OF LCD CLEAR FUNCTION NEEDED HERE
+		if (message[4] == 'C' && hash1Press && hash2Press)
+		{
 			for (int i = 0; i < 6; i++)
 			{
-			message[i] = 0;
+				message[i] = 0;
 			}
+			findFlag = 0;
+			msgCount = 0;
 		}
+			*/
 }
 
 /*

@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\Lab2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Lab2.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Nov 01 02:15:07 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Nov 01 11:58:04 2018
 <BR><P>
-<H3>Maximum Stack Usage =        104 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        112 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; scanKeypad &rArr; displayMessage &rArr; setClockStartPosition &rArr; __aeabi_d2iz
 <P>
@@ -243,7 +243,7 @@ Global Symbols
 <P><STRONG><a name="[b2]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[6a]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 112 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; scanKeypad &rArr; displayMessage &rArr; setClockStartPosition &rArr; __aeabi_d2iz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -675,8 +675,8 @@ Global Symbols
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runServo
 </UL>
 
-<P><STRONG><a name="[7b]"></a>displayMessage</STRONG> (Thumb, 136 bytes, Stack size 24 bytes, keypad.o(i.displayMessage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = displayMessage &rArr; setClockStartPosition &rArr; __aeabi_d2iz
+<P><STRONG><a name="[7b]"></a>displayMessage</STRONG> (Thumb, 156 bytes, Stack size 32 bytes, keypad.o(i.displayMessage))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = displayMessage &rArr; setClockStartPosition &rArr; __aeabi_d2iz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;soundBuzzer
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setClockStartPosition
@@ -699,26 +699,26 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scanKeypad
 </UL>
 
-<P><STRONG><a name="[82]"></a>initBuzzer</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, piezobuzzer.o(i.initBuzzer))
+<P><STRONG><a name="[83]"></a>initBuzzer</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, piezobuzzer.o(i.initBuzzer))
 <BR><BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[81]"></a>initKeypad</STRONG> (Thumb, 324 bytes, Stack size 0 bytes, keypad.o(i.initKeypad))
+<P><STRONG><a name="[82]"></a>initKeypad</STRONG> (Thumb, 324 bytes, Stack size 0 bytes, keypad.o(i.initKeypad))
 <BR><BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[83]"></a>initServo</STRONG> (Thumb, 58 bytes, Stack size 0 bytes, servodriver.o(i.initServo))
+<P><STRONG><a name="[81]"></a>initServo</STRONG> (Thumb, 60 bytes, Stack size 0 bytes, servodriver.o(i.initServo))
 <BR><BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[6b]"></a>main</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = main &rArr; scanKeypad &rArr; displayMessage &rArr; setClockStartPosition &rArr; __aeabi_d2iz
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = main &rArr; scanKeypad &rArr; displayMessage &rArr; setClockStartPosition &rArr; __aeabi_d2iz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Initialization
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initBuzzer
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initServo
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initBuzzer
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initServo
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scanKeypad
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initKeypad
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initKeypad
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
@@ -735,7 +735,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[84]"></a>scanKeypad</STRONG> (Thumb, 168 bytes, Stack size 8 bytes, keypad.o(i.scanKeypad))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = scanKeypad &rArr; displayMessage &rArr; setClockStartPosition &rArr; __aeabi_d2iz
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = scanKeypad &rArr; displayMessage &rArr; setClockStartPosition &rArr; __aeabi_d2iz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gridToChar
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findLocation
