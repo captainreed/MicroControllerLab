@@ -17,7 +17,7 @@ void initKeypad()
     /*
     enable clock GPIO E
     for the output pins PE[10:13]
-    set MODER to output mode            01
+    set MODER to output mode            		 01
     set otyper to output open drain 	 1
     set pupdr to no pull up/pull down 00
     for the input pins PA[0:3]
@@ -87,6 +87,7 @@ void scanKeypad()
     
     if one of the pins is zero and it has not changed do not allow another press(dont allow long button press to print multiple #s)
     if one of the pins is zero begin the looping through the scan process
+    
     after scanning wait for an amount of time to debounce
     */
 		findFlag = 0;
@@ -94,7 +95,6 @@ void scanKeypad()
 		debounce(10000);
     ColumnResultIDR = GPIOA->IDR;
 		ColumnResultIDR &= 0x000000FF;  
-		poundSignPressed = false;
 
 		//Switch to column based on ColumnResult
    	 switch(ColumnResultIDR){
@@ -104,25 +104,25 @@ void scanKeypad()
    		 case 0x0000000E:
        		 location[0] = 1;
        		 findLocation();
-   					   debounce(1000);
+   					   debounce(100);
        		 break;
 
    		 case 0x0000000D:
        		 location[0] = 2;
        		 findLocation();
-   						 debounce(1000);
+   						 debounce(100);
        		 break;
   	 
    		 case 0x0000000B:
        		 location[0] = 3;
        		 findLocation();
-   					   debounce(1000);
+   					   debounce(100);
        		 break;
   		 
    		 case 0x00000007:
        		 location[0] = 4;
        		 findLocation();
-       		 debounce(1000);
+       		 debounce(100);
    						 break;
    	 }
    		 //display message will pull the data from location[] and display the correct character in the next slot

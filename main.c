@@ -13,17 +13,17 @@ int main(void){
 	initKeypad();
 	initBuzzer();
 	initServo();
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	initTimeHandler();
 	//soundBuzzer(3);
 	LCD_DisplayString((uint8_t*)"Test");
-=======
-	setClockStartPosition(45);
-	soundBuzzer(1);
-	runServo(45);
+//=======
+	//setClockStartPosition(45);
+	//soundBuzzer(1);
+	//runServo(45);
 	//initTimeHandler();
-	soundBuzzer(3);
->>>>>>> 4be629ff626c1b71e251d93e8ef57e82205fe34f
+	//soundBuzzer(3);
+//>>>>>>> 4be629ff626c1b71e251d93e8ef57e82205fe34f
 	while(1)
 	{
 		//HandleTime();
